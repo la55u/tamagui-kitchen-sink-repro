@@ -1,0 +1,55 @@
+{
+  "name": "tamagui-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "native": "yarn build && cd apps/expo && yarn start",
+    "web": "yarn build && cd apps/next && yarn next",
+    "sb:vite": "cd apps/vite && yarn storybook",
+    "sb:native": "cd apps/storybook-react-native && yarn start",
+    "sb": "cd apps/storybook-react && yarn sb",
+    "web:prod": "yarn workspace next-app build",
+    "watch": "yarn turbo run watch --filter=tamagui-extras",
+    "postinstall": "yarn build",
+    "build": "yarn workspaces foreach --exclude next-app --exclude sb-react --exclude vite -pi run build",
+    "build:all": "yarn turbo run build --filter=...tamagui-extras",
+    "build:web": "yarn turbo run build --filter=next-app && yarn turbo run start --filter=next-app",
+    "upgrade:tamagui": "manypkg upgrade tamagui && manypkg upgrade @tamagui && manypkg upgrade tamagui-loader && manypkg upgrade react-native-web-lite",
+    "upgrade:rnw": "manypkg upgrade react-native-web",
+    "upgrade:next": "manypkg upgrade next && manypkg upgrade eslint-config-next",
+    "sync:tamagui": "${TAMAGUI_PATH:-$HOME/tamagui}/starters-sync.sh",
+    "eas:dev:ios": "cd apps/expo && yarn eas:dev:ios",
+    "doctor": "yarn turbo run doc",
+    "tests": "yarn build && cd apps/tests && yarn test",
+    "check-types": "yarn turbo run check-types",
+    "rm:nodemodule": "rm -rf node_modules apps/expo/node_modules apps/next/node_modules packages/ui/node_modules yarn.lock apps/storybook-react/node_modules apps/storybook-react-native/node_modules apps/storybook-react/dist"
+  },
+  "resolutions": {
+    "esbuild": "0.15.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-refresh": "^0.14.0",
+    "typescript": "4.9.4",
+    "react-native-web": "0.18.9",
+    "webpack": "^5.74.0",
+    "@tamagui/core": "1.2.8",
+    "@tamagui/**": "1.2.8",
+    "tamagui": "1.2.8"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.9"
+  },
+  "devDependencies": {
+    "@manypkg/cli": "^0.19.2",
+    "@types/react": "^18.0.21",
+    "@types/react-native": "^0.69",
+    "eslint": "^8.21.0",
+    "prettier": "^2.7.1",
+    "turbo": "^1.6.3",
+    "typescript": "^4.9.4"
+  },
+  "packageManager": "yarn@3.2.3"
+}

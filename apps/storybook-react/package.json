@@ -1,0 +1,39 @@
+{
+  "name": "sb-react",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "TAMAGUI_TARGET=web build-storybook -s public -o dist",
+    "sb": "TAMAGUI_TARGET=web start-storybook -p 6006 -s ./public",
+    "check-types": "tsc --noemit"
+  },
+  "dependencies": {
+    "app": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-native": "0.0.0",
+    "react-native-web": "0.18.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@fontsource/inter": "^4.5.14",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/addon-react-native-web": "^0.0.19",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@types/node": "16.11.9",
+    "@types/react": "^18.0.17",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-react-native-web": "^0.17.5",
+    "eslint": "7",
+    "eslint-config-next": "13.1.6",
+    "eslint-plugin-storybook": "^0.6.4",
+    "path-browserify": "^1.0.1",
+    "storybook-addon-next-router": "^4.0.2",
+    "typescript": "4.9.4"
+  }
+}
